@@ -10,6 +10,12 @@ To play with any of my solutions use `iex -S mix`. If you run into this and you 
 
 `AdventOfCode.Day1Part2.run()`
 
+## Day 2
+
+`AdventOfCode.Day2.run_part_1`
+
+`AdventOfCode.Day1Part2.run_part_2`
+
 ## Resources used along the way
 
 I find myself regularly referencing [Joy of Elixir](https://joyofelixir.com/11-files/).

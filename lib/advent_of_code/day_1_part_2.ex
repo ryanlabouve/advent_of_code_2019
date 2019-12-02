@@ -9,10 +9,12 @@ defmodule AdventOfCode.Day1Part2 do
     end
   end
 
-  def fuel_required_to_launch(mass) when mass > 0 do
+  def fuel_required_to_launch(mass) do
     fuel_to_launch = Integer.floor_div(mass, 3) - 2
-    fuel_to_launch + fuel_required_to_launch(fuel_to_launch)
-  end
 
-  def fuel_required_to_launch(mass) when mass <= 0, do: 0
+    cond do
+      fuel_to_launch > 0 -> fuel_to_launch + fuel_required_to_launch(fuel_to_launch)
+      fuel_to_launch <= 0 -> 0
+    end
+  end
 end

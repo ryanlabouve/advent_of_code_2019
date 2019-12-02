@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day1 do
+defmodule AdventOfCode.Day1Part2 do
   def run do
     with {:ok, file_string} <- File.read("lib/advent_of_code/day_1_input.txt") do
       file_string
@@ -9,7 +9,10 @@ defmodule AdventOfCode.Day1 do
     end
   end
 
-  def fuel_required_to_launch(mass) do
-    Integer.floor_div(mass, 3) - 2
+  def fuel_required_to_launch(mass) when mass > 0 do
+    fuel_to_launch = Integer.floor_div(mass, 3) - 2
+    fuel_to_launch + fuel_required_to_launch(fuel_to_launch)
   end
+
+  def fuel_required_to_launch(mass) when mass <= 0, do: 0
 end

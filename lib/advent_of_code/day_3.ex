@@ -7,7 +7,7 @@ defmodule AdventOfCode.Day3 do
         |> String.split("\n")
         |> Enum.map(&String.split(&1, ","))
 
-      board(2000)
+      %{}
       |> run_instruction_set(Enum.at(instruction_set, 0), new_wire(1))
       |> run_instruction_set(Enum.at(instruction_set, 1), new_wire(2))
       |> shortest_board_distance()
@@ -28,8 +28,8 @@ defmodule AdventOfCode.Day3 do
         |> String.split("\n")
         |> Enum.map(&String.split(&1, ","))
 
-      # 159
-      board(500)
+      # 135
+      %{}
       |> run_instruction_set(Enum.at(instruction_set, 0), new_wire(1))
       |> run_instruction_set(Enum.at(instruction_set, 1), new_wire(2))
       |> shortest_board_distance()
@@ -40,7 +40,7 @@ defmodule AdventOfCode.Day3 do
     instruction_set = ["D5"]
     instruction_set_2 = ["R1", "D5", "L1"]
 
-    board(10)
+    %{}
     |> run_instruction_set(instruction_set, new_wire(1))
     |> run_instruction_set(instruction_set_2, new_wire(2))
     |> shortest_board_distance()
@@ -68,8 +68,10 @@ defmodule AdventOfCode.Day3 do
 
     answer = d |> Enum.min()
 
-    require IEx
-    IEx.pry()
+    IO.puts(answer)
+
+    # require IEx
+    # IEx.pry()
   end
 
   def write_move(board, wire, instruction) do
@@ -84,7 +86,7 @@ defmodule AdventOfCode.Day3 do
       {board, wire}
     else
       wire = Map.update(wire, :position, {0, 0}, fn {x, y} -> {x, y - 1} end)
-      board = Map.update(board, wire.position, [], &(&1 ++ [wire.marker]))
+      board = Map.update(board, wire.position, [wire.marker], &(&1 ++ [wire.marker]))
       write_move(board, wire, "D", number - 1)
     end
   end
@@ -94,7 +96,7 @@ defmodule AdventOfCode.Day3 do
       {board, wire}
     else
       wire = Map.update(wire, :position, {0, 0}, fn {x, y} -> {x, y + 1} end)
-      board = Map.update(board, wire.position, [], &(&1 ++ [wire.marker]))
+      board = Map.update(board, wire.position, [wire.marker], &(&1 ++ [wire.marker]))
       write_move(board, wire, "U", number - 1)
     end
   end
@@ -104,7 +106,7 @@ defmodule AdventOfCode.Day3 do
       {board, wire}
     else
       wire = Map.update(wire, :position, {0, 0}, fn {x, y} -> {x - 1, y} end)
-      board = Map.update(board, wire.position, [], &(&1 ++ [wire.marker]))
+      board = Map.update(board, wire.position, [wire.marker], &(&1 ++ [wire.marker]))
       write_move(board, wire, "L", number - 1)
     end
   end
@@ -114,12 +116,9 @@ defmodule AdventOfCode.Day3 do
       {board, wire}
     else
       wire = Map.update(wire, :position, {0, 0}, fn {x, y} -> {x + 1, y} end)
-      board = Map.update(board, wire.position, [], &(&1 ++ [wire.marker]))
+      board = Map.update(board, wire.position, [wire.marker], &(&1 ++ [wire.marker]))
       write_move(board, wire, "R", number - 1)
     end
-  end
-
-  def calculate_distance(_board) do
   end
 
   def board(size \\ 1000) do

@@ -1,0 +1,1 @@
+alias AdventOfCode.Day3

@@ -16,4 +16,9 @@ defmodule AdventOfCodeTest.Day3 do
     # 40 would be the unoptimized version
     assert(Day3.run_basic_min_signal_delay() === 30)
   end
+
+  test "Day3.run__min_signal_delay_sample_1" do
+    # 40 would be the unoptimized version
+    assert(Day3.run_min_signal_delay_sample_1() === 610)
+  end
 end

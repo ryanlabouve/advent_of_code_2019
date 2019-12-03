@@ -16,6 +16,12 @@ To play with any of my solutions use `iex -S mix`. If you run into this and you 
 
 `AdventOfCode.Day1Part2.run_part_2`
 
+## Day 3
+
+`AdventOfCode.Day3.run`
+
+`AdventOfCode.Day3.run_min_signal_delay_real`
+
 ## Resources used along the way
 
 I find myself regularly referencing [Joy of Elixir](https://joyofelixir.com/11-files/).
